@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio Bilbo 91.5 FM | El Sonido de Brandsen</title>
+  
+  <!-- Tipografía elegante y FontAwesome para iconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Variables de colores basadas en las capturas */
+    :root {
+      --bg-color: #120907;
+      --card-bg: #1a0e0b;
+      --accent-color: #e59b34;
+      --text-main: #f5e8da;
+      --text-muted: #a68d83;
+      --border-color: #331f17;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* BARRA DE NAVEGACIÓN SUPERIOR */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      border-bottom: 1px solid rgba(229, 155, 52, 0.1);
+      position: sticky;
+      top: 0;
+      background-color: rgba(18, 9, 7, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .dial-badge {
+      font-size: 0.8rem;
+      color: var(--accent-color);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .brand-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-left: 10px;
+    }
+
+    .social-icon {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1rem;
+      border: 1px solid var(--border-color);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      color: var(--accent-color);
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    .live-tag {
+      background-color: rgba(229, 155, 52, 0.15);
+      color: var(--accent-color);
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--accent-color);
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-color);
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.2); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* SECCIÓN PRINCIPAL / HERO */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background: radial-gradient(circle at center, rgba(229, 155, 52, 0.08) 0%, rgba(18, 9, 7, 1) 70%);
+    }
+
+    .guitar-logo {
+      max-width: 350px;
+      width: 90%;
+      height: auto;
+      margin-bottom: 30px;
+      filter: drop-shadow(0 0 25px rgba(229, 155, 52, 0.3));
+    }
+
+    .hero-subtitle {
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      line-height: 1.1;
+      margin-bottom: 25px;
+      max-width: 800px;
+    }
+
+    .hero-description {
+      color: var(--text-muted);
+      max-width: 600px;
+      font-size: 1.05rem;
+      margin-bottom: 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-color);
+      color: #120907;
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(229, 155, 52, 0.4);
+    }
+
+    .btn-secondary {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      color: var(--text-main);
+    }
+
+    /* SECCIÓN NUESTRO ENFOQUE */
+    .enfoque {
+      padding: 100px 10%;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 50px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .enfoque-title-section .subtitle {
+      color: var(--accent-color);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .enfoque-title-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      line-height: 1.2;
+      margin-top: 15px;
+    }
+
+    .enfoque-content p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+
+    .stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .stat-item .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--accent-color);
+    }
+
+    .stat-item .label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* SECCIÓN DESDE BRANDSEN AL MUNDO */
+    .emblema-section {
+      padding: 100px 10%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      background-color: var(--card-bg);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .emblema-img {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      display: block;
+      filter: drop-shadow(0 0 20px rgba(229, 155, 52, 0.2));
+    }
+
+    .emblema-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    .emblema-info h2 i {
+      color: var(--accent-color);
+    }
+
+    .emblema-info p {
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    .genre-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      border: 1px solid var(--border-color);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* REPRODUCTOR EN VIVO GIGANTE */
+    .player-section {
+      padding: 100px 20px;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .player-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .player-section h2 i {
+      color: var(--accent-color);
+    }
+
+    .big-play-btn {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #e59b34, #b8731d);
+      border: none;
+      border-radius: 50%;
+      color: #120907;
+      font-size: 2.5rem;
+      margin: 40px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(229, 155, 52, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+    }
+
+    .big-play-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 45px rgba(229, 155, 52, 0.6);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 15px; }
+      nav ul { gap: 15px; }
+      .hero-title { font-size: 2.5rem; }
+      .enfoque, .emblema-section { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <span class="dial-badge">91.5 FM</span>
+      <a href="#" class="brand-title">Radio Bilbo</a>
+      <div class="social-links">
+        <a href="https://www.instagram.com/radiobilbofm/?hl=es" target="_blank" class="social-icon" title="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61591400250951" target="_blank" class="social-icon" title="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#identidad">Identidad</a></li>
+        <li><a href="#musica">Música</a></li>
+        <li><a href="#envivo">En Vivo</a></li>
+        <li><a href="#oyentes">Oyentes</a></li>
+      </ul>
+    </nav>
+    <a href="https://radiobilbofm.radio12345.com" target="_blank" class="live-tag">
+      <div class="live-dot"></div>
+      EN VIVO
+    </a>
+  </header>
+
+  <!-- HERO SECTION CON LA GUITARRA ENCIMA DEL TÍTULO -->
+  <section class="hero" id="identidad">
+    <img src="logo.png" alt="Bilbo FM 91.5" class="guitar-logo">
+    <div class="hero-subtitle">— RADIO BILBO TRANSMITIENDO DESDE EL CORAZÓN</div>
+    <h1 class="hero-title">EL SONIDO DE BRANDSEN.</h1>
+    <p class="hero-description">
+      Conectamos generaciones a través de una selección de música cuidadosamente seleccionada. El espacio donde la esencia de nuestra cultura encuentra su lugar en el dial.
+    </p>
+    <div class="hero-buttons">
+      <!-- BOTÓN DE ESCUCHAR EN VIVO REDIRIGE AL LINK -->
+      <a href="https://radiobilbofm.radio12345.com" target="_blank" class="btn-primary">▶ Escuchar en vivo</a>
+      <a href="#musica" class="btn-secondary">Explorar nuestra programación →</a>
+    </div>
+  </section>
+
+  <!-- SECCIÓN NUESTRO ENFOQUE -->
+  <section class="enfoque" id="musica">
+    <div class="enfoque-title-section">
+      <span class="subtitle">NUESTRO ENFOQUE</span>
+      <h2>Rescatar y difundir lo mejor de nuestra identidad musical.</h2>
+    </div>
+    <div class="enfoque-content">
+      <p>Nuestra programación está pensada para acompañarte durante todo el día con una propuesta que fusiona la historia y la actualidad.</p>
+      <p>Mantenemos siempre un estándar de calidad profesional en cada emisión — porque cada canción merece ser escuchada con el respeto que su historia construyó.</p>
+      <div class="stats">
+        <div class="stat-item">
+          <div class="num">24/7</div>
+          <div class="label">En el aire</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">50</div>
+          <div class="label">Géneros raíz</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">∞</div>
+          <div class="label">Memoria sonora</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DESDE BRANDSEN AL MUNDO -->
+  <section class="emblema-section">
+    <div>
+      <img src="emblema.png" alt="Radio Bilbo Emblema" class="emblema-img">
+    </div>
+    <div class="emblema-info">
+      <span style="color: var(--accent-color); font-size: 0.8rem; letter-spacing: 2px;">NUESTRO EMBLEMA</span>
+      <h2>Desde <i>Brandsen</i> al mundo.</h2>
+      <p>Nuestro sello reúne todo lo que somos: el abrazo del tango, la raíz del folklore y la fuerza del rock nacional. Una identidad que viaja por las ondas del 91.5 y cruza fronteras.</p>
+      <div class="genre-tags">
+        <span class="tag">Tango</span>
+        <span class="tag">Folklore</span>
+        <span class="tag">Rock Nacional</span>
+        <span class="tag">FM 91.5</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPRODUCTOR EN VIVO REDIRIGE AL LINK -->
+  <section class="player-section" id="envivo">
+    <span style="color: var(--accent-color); font-size: 0.8rem; letter-spacing: 2px;">TRANSMITIENDO AHORA</span>
+    <h2>Escuchanos <i>en vivo</i>, desde donde estés.</h2>
+    <p style="color: var(--text-muted);">Accedé a nuestra transmisión en tiempo real desde cualquier dispositivo.</p>
+    
+    <a href="https://radiobilbofm.radio12345.com" target="_blank" class="big-play-btn">▶</a>
+    <p style="font-family: 'Playfair Display', serif; font-size: 1.1rem;">Hacé clic para escuchar la radio en vivo</p>
+    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 5px;">REPRODUCTOR DE STREAMING</p>
+  </section>
+
+</body>
+</html>
