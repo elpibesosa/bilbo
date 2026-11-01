@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio Bilbo 91.5 FM | Radio de Brandsen: tango, folklore y rock nacional</title>
+  <meta name="description" content="Radio Bilbo 91.5 FM, la radio de Brandsen. Tango y folklore a la mañana, rock nacional y pop a la tarde, lentos a la noche. Escuchá en vivo desde cualquier dispositivo.">
+  <meta name="keywords" content="Radio Bilbo, 91.5 FM, radio de Brandsen, FM Brandsen, radio en vivo, tango, folklore, rock nacional">
+  <meta name="author" content="Radio Bilbo 91.5 FM">
+  <meta name="theme-color" content="#120907">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="canonical" href="https://bilbofm.ar/">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+
+  <!-- Open Graph / WhatsApp / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Radio Bilbo 91.5 FM">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:url" content="https://bilbofm.ar/">
+  <meta property="og:title" content="Radio Bilbo 91.5 FM | El Sonido de Brandsen">
+  <meta property="og:description" content="Tango y folklore a la mañana, rock nacional y pop a la tarde, lentos a la noche. Escuchá la radio de Brandsen en vivo.">
+  <meta property="og:image" content="https://bilbofm.ar/logo.png">
+  <meta property="og:image:alt" content="Logo de Radio Bilbo 91.5 FM">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Radio Bilbo 91.5 FM | El Sonido de Brandsen">
+  <meta name="twitter:description" content="Tango, folklore y rock nacional en vivo desde Brandsen.">
+  <meta name="twitter:image" content="https://bilbofm.ar/logo.png">
+
+  <!-- Datos estructurados para Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RadioStation",
+    "name": "Radio Bilbo 91.5 FM",
+    "alternateName": "Bilbo FM",
+    "slogan": "El Sonido de Brandsen",
+    "url": "https://bilbofm.ar/",
+    "logo": "https://bilbofm.ar/logo.png",
+    "image": "https://bilbofm.ar/logo.png",
+    "description": "Radio FM 91.5 de Brandsen, Buenos Aires. Tango, folklore y rock nacional las 24 horas.",
+    "areaServed": { "@type": "City", "name": "Brandsen" },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Brandsen",
+      "addressRegion": "Buenos Aires",
+      "addressCountry": "AR"
+    },
+    "sameAs": [
+      "https://www.instagram.com/radiobilbofm/",
+      "https://www.facebook.com/profile.php?id=61591400250951"
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #120907;
+      --card-bg: #1a0e0b;
+      --accent-color: #e59b34;
+      --text-main: #f5e8da;
+      --text-muted: #a68d83;
+      --border-color: #331f17;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .brand-title { font-family: 'Playfair Display', serif; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute; left: -999px; top: 10px;
+      background: var(--accent-color); color: #120907;
+      padding: 8px 16px; border-radius: 8px; z-index: 200; font-weight: 600;
+    }
+    .skip-link:focus { left: 10px; }
+
+    .icon { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .icon-fill { fill: currentColor; stroke: none; }
+
+    /* HEADER */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 5%;
+      border-bottom: 1px solid rgba(229, 155, 52, 0.1);
+      position: sticky; top: 0;
+      background-color: rgba(18, 9, 7, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+    .brand { display: flex; align-items: center; gap: 15px; }
+    .dial-badge { font-size: 0.8rem; color: var(--accent-color); font-weight: 600; letter-spacing: 1px; }
+    .brand-title { font-size: 1.4rem; color: var(--text-main); text-decoration: none; }
+    .social-links { display: flex; gap: 10px; margin-left: 10px; }
+    .social-icon {
+      color: var(--text-muted); text-decoration: none; font-size: 1rem;
+      border: 1px solid var(--border-color);
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .social-icon:hover { color: var(--accent-color); border-color: var(--accent-color); transform: translateY(-2px); }
+
+    nav ul { display: flex; list-style: none; gap: 25px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
+    nav a:hover { color: var(--accent-color); }
+
+    .live-tag {
+      background-color: rgba(229, 155, 52, 0.15);
+      color: var(--accent-color);
+      padding: 6px 16px; border-radius: 20px;
+      border: 1px solid var(--accent-color);
+      font-size: 0.8rem; font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .live-dot { width: 8px; height: 8px; background-color: var(--accent-color); border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.2); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 85vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 60px 20px;
+      background: radial-gradient(circle at center, rgba(229, 155, 52, 0.08) 0%, rgba(18, 9, 7, 1) 70%);
+    }
+    /* Logo redondo: gira lento y suave alrededor del centro real del círculo */
+    .logo-wrap { position: relative; width: 90%; max-width: 350px; margin-bottom: 30px; }
+    .logo-wrap::before { /* resplandor dorado fijo, detrás del círculo */
+      content: ""; position: absolute; border-radius: 50%;
+      left: 9.1%; top: 8.67%; width: 84.5%; height: 80.38%;
+      box-shadow: 0 0 45px rgba(229, 155, 52, 0.28);
+    }
+    .guitar-logo {
+      position: relative; display: block; width: 100%; height: auto;
+      transform-origin: 51.35% 48.86%;
+      animation: girar 40s linear infinite; /* una vuelta cada 40 segundos */
+    }
+    @keyframes girar { to { transform: rotate(360deg); } }
+    .new-badge {
+      display: inline-block; margin-bottom: 18px;
+      border: 1px solid var(--border-color); border-radius: 20px;
+      padding: 5px 16px; font-size: 0.8rem; color: var(--text-muted);
+    }
+    .hero-subtitle {
+      color: var(--accent-color); text-transform: uppercase;
+      letter-spacing: 3px; font-size: 0.85rem; margin-bottom: 15px; font-weight: 600;
+    }
+    .hero-title { font-size: 3.8rem; line-height: 1.1; margin-bottom: 25px; max-width: 800px; }
+    .hero-description { color: var(--text-muted); max-width: 620px; font-size: 1.05rem; margin-bottom: 40px; }
+    .hero-buttons { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; justify-content: center; }
+
+    .btn-primary {
+      background-color: var(--accent-color); color: #120907;
+      padding: 14px 28px; border-radius: 30px; text-decoration: none; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 10px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(229, 155, 52, 0.4); }
+    .btn-outline {
+      color: var(--text-main); border: 1px solid var(--border-color);
+      padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.95rem;
+      display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease;
+    }
+    .btn-outline:hover { color: var(--accent-color); border-color: var(--accent-color); }
+    .btn-secondary { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease; }
+    .btn-secondary:hover { color: var(--text-main); }
+
+    /* SECCIONES */
+    section { border-top: 1px solid var(--border-color); }
+    .eyebrow { color: var(--accent-color); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
+
+    /* ENFOQUE */
+    .enfoque { padding: 100px 10%; display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; }
+    .enfoque-title-section h2 { font-size: 2.8rem; line-height: 1.2; margin-top: 15px; }
+    .enfoque-content p { color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; }
+    .stats { display: flex; gap: 40px; margin-top: 40px; flex-wrap: wrap; }
+    .stat-item .num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--accent-color); }
+    .stat-item .label { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* PROGRAMACIÓN */
+    .programacion { padding: 100px 10%; background-color: var(--card-bg); }
+    .section-head { text-align: center; max-width: 640px; margin: 0 auto 50px; }
+    .section-head h2 { font-size: 2.8rem; line-height: 1.2; margin: 15px 0; }
+    .section-head p { color: var(--text-muted); }
+    .schedule { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .slot {
+      background-color: var(--bg-color); border: 1px solid var(--border-color);
+      border-radius: 18px; padding: 32px 28px; position: relative;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .slot:hover { border-color: rgba(229, 155, 52, 0.5); transform: translateY(-4px); }
+    .slot.is-now { border-color: var(--accent-color); box-shadow: 0 0 30px rgba(229, 155, 52, 0.15); }
+    .slot .when { color: var(--accent-color); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+    .slot h3 { font-size: 1.7rem; margin: 10px 0 12px; line-height: 1.2; }
+    .slot p { color: var(--text-muted); font-size: 0.95rem; }
+    .slot .note { margin-top: 14px; font-size: 0.85rem; color: var(--text-main); }
+    .now-badge {
+      display: none; position: absolute; top: 18px; right: 18px;
+      background-color: var(--accent-color); color: #120907;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 1px;
+      padding: 3px 10px; border-radius: 12px;
+    }
+    .slot.is-now .now-badge { display: inline-block; }
+
+    /* REPRODUCTOR MP3 DE CADA BLOQUE (queda siempre abajo de la tarjeta) */
+    .slot { display: flex; flex-direction: column; }
+    .slot-foot { margin-top: auto; padding-top: 24px; }
+    .mini-player {
+      display: flex; align-items: center; gap: 14px;
+      background-color: rgba(229, 155, 52, 0.08);
+      border: 1px solid var(--border-color);
+      border-radius: 14px; padding: 12px 14px;
+    }
+    .mp-btn {
+      flex: none; width: 44px; height: 44px; border-radius: 50%;
+      border: none; cursor: pointer;
+      background: linear-gradient(135deg, #e59b34, #b8731d); color: #120907;
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+      transition: transform 0.2s ease;
+    }
+    .mp-btn:hover { transform: scale(1.08); }
+    .mp-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+    .mp-title { font-size: 0.85rem; font-weight: 600; line-height: 1.3; color: var(--text-main); }
+    .mp-seek { width: 100%; accent-color: var(--accent-color); cursor: pointer; }
+    .mp-time { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* EMBLEMA */
+    .emblema-section { padding: 100px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .emblema-img { width: 100%; max-width: 400px; height: auto; margin: 0 auto; display: block; filter: drop-shadow(0 0 20px rgba(229, 155, 52, 0.2)); }
+    .emblema-info h2 { font-size: 2.8rem; margin: 12px 0 20px; }
+    .emblema-info h2 em { color: var(--accent-color); }
+    .emblema-info p { color: var(--text-muted); margin-bottom: 30px; }
+    .genre-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+    .tag { border: 1px solid var(--border-color); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; color: var(--text-muted); }
+
+    /* PLAYER */
+    .player-section { padding: 100px 20px; text-align: center; background-color: var(--card-bg); }
+    .player-section h2 { font-size: 3rem; margin: 12px 0 15px; line-height: 1.2; }
+    .player-section h2 em { color: var(--accent-color); }
+    .player-section p.lead { color: var(--text-muted); }
+    .big-play-btn {
+      width: 120px; height: 120px;
+      background: linear-gradient(135deg, #e59b34, #b8731d);
+      border: none; border-radius: 50%; color: #120907; font-size: 2.5rem;
+      margin: 40px auto 20px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 30px rgba(229, 155, 52, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none; cursor: pointer;
+    }
+    .big-play-btn:hover { transform: scale(1.08); box-shadow: 0 0 45px rgba(229, 155, 52, 0.6); }
+    .big-play-btn .icon { width: 2.2rem; height: 2.2rem; }
+    .player-status { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+    .player-sub { color: var(--text-muted); font-size: 0.85rem; margin-top: 6px; }
+    .now-playing { margin-top: 18px; color: var(--accent-color); font-size: 0.9rem; font-weight: 600; }
+
+    /* INSTALAR LA APP */
+    .instalar { padding: 90px 10%; text-align: center; background-color: var(--card-bg); }
+    .instalar h2 { font-size: 2.6rem; line-height: 1.2; margin: 15px 0; }
+    .instalar .lead { color: var(--text-muted); max-width: 620px; margin: 0 auto 30px; }
+    .install-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
+    .install-actions button { font: inherit; cursor: pointer; border: none; }
+    .install-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 760px; margin: 0 auto; text-align: left; }
+    .step-card { background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; }
+    .step-card h3 { font-size: 1.25rem; margin-bottom: 8px; }
+    .step-card p { color: var(--text-muted); font-size: 0.95rem; }
+    .step-card strong { color: var(--text-main); }
+
+    .hero-buttons button { font: inherit; cursor: pointer; }
+    .install-actions button { font: inherit; cursor: pointer; }
+
+    /* Botón flotante "Descargar la app" (solo en el celular) */
+    .app-bar { display: none; }
+    @media (max-width: 768px) {
+      .app-bar {
+        display: flex; align-items: center; gap: 2px;
+        position: fixed; left: 50%; transform: translateX(-50%); bottom: 18px; z-index: 140;
+        white-space: nowrap; width: max-content; max-width: calc(100vw - 100px);
+        background: linear-gradient(135deg, #e59b34, #b8731d);
+        border-radius: 32px; padding: 4px 4px 4px 6px;
+        box-shadow: 0 6px 22px rgba(0, 0, 0, 0.5);
+      }
+      .app-bar-btn { display: inline-flex; align-items: center; gap: 8px; border: none; background: transparent; color: #120907; font: inherit; font-weight: 600; font-size: 0.95rem; padding: 10px 8px 10px 14px; cursor: pointer; }
+      .app-bar-x { width: 34px; height: 34px; border-radius: 50%; border: none; background: rgba(18, 9, 7, 0.15); color: #120907; font-size: 1.2rem; line-height: 1; cursor: pointer; }
+    }
+
+    /* Ventana de ayuda para instalar */
+    .modal { position: fixed; inset: 0; z-index: 300; background: rgba(0, 0, 0, 0.75); display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .modal-card { position: relative; background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px 26px 26px; max-width: 420px; width: 100%; text-align: left; }
+    .modal-card h3 { font-size: 1.5rem; margin-bottom: 12px; padding-right: 30px; line-height: 1.25; }
+    .modal-card p { color: var(--text-muted); margin-bottom: 14px; }
+    .modal-card strong { color: var(--text-main); }
+    .modal-card .btn-primary { margin-top: 6px; border: none; font: inherit; cursor: pointer; }
+    .modal-close { position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border-color); background: transparent; color: var(--text-muted); font-size: 1.3rem; line-height: 1; cursor: pointer; }
+    .modal-close:hover { color: var(--accent-color); border-color: var(--accent-color); }
+
+    /* OYENTES */
+    .oyentes { padding: 100px 10%; text-align: center; }
+    .oyentes h2 { font-size: 2.8rem; line-height: 1.2; margin: 15px 0; }
+    .oyentes p { color: var(--text-muted); max-width: 600px; margin: 0 auto 35px; }
+    .contact-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border-color); padding: 50px 10% 40px; text-align: center; background-color: var(--card-bg); }
+    footer .brand-title { display: block; font-size: 1.6rem; margin-bottom: 6px; }
+    footer p { color: var(--text-muted); font-size: 0.9rem; }
+    footer .social-links { justify-content: center; margin: 22px 0 18px; }
+    footer .copy { font-size: 0.8rem; margin-top: 10px; }
+
+    /* WHATSAPP FLOTANTE */
+    .wa-float {
+      position: fixed; right: 20px; bottom: 20px; z-index: 150;
+      width: 56px; height: 56px; border-radius: 50%;
+      background-color: #25d366; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.7rem; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      text-decoration: none; transition: transform 0.2s ease;
+    }
+    .wa-float:hover { transform: scale(1.08); }
+    [hidden] { display: none !important; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .schedule { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 12px; padding: 14px 5%; }
+      nav ul { gap: 18px; flex-wrap: wrap; justify-content: center; }
+      .hero-title { font-size: 2.5rem; }
+      .enfoque, .emblema-section, .programacion, .oyentes, .instalar { padding: 70px 7%; }
+      .install-steps { grid-template-columns: 1fr; }
+      .instalar h2 { font-size: 2.1rem; }
+      .enfoque, .emblema-section { grid-template-columns: 1fr; gap: 35px; }
+      .enfoque-title-section h2, .section-head h2, .emblema-info h2, .oyentes h2 { font-size: 2.1rem; }
+      .player-section h2 { font-size: 2.2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .live-dot { animation: none; }
+      .guitar-logo { animation: none; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#contenido" class="skip-link">Saltar al contenido</a>
+
+  <!-- Iconos (se cargan una sola vez, sin librerías externas) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 20h16"/></symbol>
+  </svg>
+
+  <header>
+    <div class="brand">
+      <span class="dial-badge">91.5 FM</span>
+      <a href="#inicio" class="brand-title">Radio Bilbo</a>
+      <div class="social-links">
+        <a href="https://www.instagram.com/radiobilbofm/?hl=es" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram de Radio Bilbo" title="Instagram">
+          <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61591400250951" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook de Radio Bilbo" title="Facebook">
+          <svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg>
+        </a>
+      </div>
+    </div>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#programacion">Programación</a></li>
+        <li><a href="#envivo">En Vivo</a></li>
+        <li><a href="#app">App</a></li>
+        <li><a href="#oyentes">Oyentes</a></li>
+      </ul>
+    </nav>
+    <a href="https://radiobilbofm.radio12345.com" target="_blank" rel="noopener noreferrer" class="live-tag" data-live-link>
+      <span class="live-dot" aria-hidden="true"></span>
+      EN VIVO
+    </a>
+  </header>
+
+  <main id="contenido">
+
+    <!-- HERO -->
+    <section class="hero" id="inicio" style="border-top:none">
+      <div class="logo-wrap">
+        <img src="logo.png" alt="Logo de Radio Bilbo 91.5 FM" class="guitar-logo" width="1000" height="1050" fetchpriority="high" decoding="async">
+      </div>
+      <span class="new-badge">Radio nueva · Brandsen, Buenos Aires</span>
+      <div class="hero-subtitle">— RADIO BILBO TRANSMITIENDO DESDE EL CORAZÓN</div>
+      <h1 class="hero-title">EL SONIDO DE BRANDSEN.</h1>
+      <p class="hero-description">
+        Radio Bilbo 91.5 FM es la radio de Brandsen que conecta generaciones con tango, folklore y rock nacional. El espacio donde la esencia de nuestra cultura encuentra su lugar en el dial.
+      </p>
+      <div class="hero-buttons">
+        <a href="https://radiobilbofm.radio12345.com" target="_blank" rel="noopener noreferrer" class="btn-primary" data-live-link>
+          <svg class="icon icon-fill" aria-hidden="true"><use href="#i-play"/></svg> Escuchar en vivo
+        </a>
+        <button type="button" class="btn-outline" data-instalar>
+          <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Descargar la app
+        </button>
+        <a href="#programacion" class="btn-secondary">Ver la programación →</a>
+      </div>
+    </section>
+
+    <!-- PROGRAMACIÓN -->
+    <section class="programacion" id="programacion">
+      <div class="section-head">
+        <span class="eyebrow">Programación</span>
+        <h2>Un día entero de música con identidad.</h2>
+        <p>Cada momento del día tiene su sonido. Así suena Radio Bilbo de mañana a noche.</p>
+      </div>
+      <div class="schedule">
+        <article class="slot" data-name="Tango y folklore" data-start="7" data-end="13">
+          <span class="now-badge">AL AIRE</span>
+          <span class="when">De 7 a 13 hs</span>
+          <h3>Tango y folklore</h3>
+          <p>Arrancamos el día con el abrazo del tango y la raíz del folklore argentino.</p>
+          <div class="slot-foot">
+            <div class="mini-player" data-title="La Hora Tango y Folclore">
+              <button class="mp-btn" type="button" aria-label="Reproducir La Hora Tango y Folclore">
+                <svg class="icon icon-fill" aria-hidden="true"><use href="#i-play"/></svg>
+              </button>
+              <div class="mp-body">
+                <span class="mp-title">La Hora Tango y Folclore</span>
+                <input class="mp-seek" type="range" min="0" max="100" step="0.1" value="0" aria-label="Posición del audio">
+                <span class="mp-time">0:00</span>
+              </div>
+              <audio preload="metadata" src="la-hora-tango-y-folclore.mp3"></audio>
+            </div>
+          </div>
+        </article>
+        <article class="slot" data-name="Rock nacional y pop" data-start="13" data-end="21">
+          <span class="now-badge">AL AIRE</span>
+          <span class="when">De 13 a 21 hs</span>
+          <h3>Rock nacional y pop</h3>
+          <p>La fuerza del rock de acá, con los clásicos y los temas que nunca pasan de moda, y algo de pop.</p>
+          <div class="slot-foot">
+            <div class="mini-player" data-title="La Hora Pop and Rock">
+              <button class="mp-btn" type="button" aria-label="Reproducir La Hora Pop and Rock">
+                <svg class="icon icon-fill" aria-hidden="true"><use href="#i-play"/></svg>
+              </button>
+              <div class="mp-body">
+                <span class="mp-title">La Hora Pop and Rock</span>
+                <input class="mp-seek" type="range" min="0" max="100" step="0.1" value="0" aria-label="Posición del audio">
+                <span class="mp-time">0:00</span>
+              </div>
+              <audio preload="metadata" src="la-hora-pop-and-rock.mp3"></audio>
+            </div>
+          </div>
+        </article>
+        <article class="slot" data-name="Lentos y rock nacional" data-start="21" data-end="24">
+          <span class="now-badge">AL AIRE</span>
+          <span class="when">De 21 a 24 hs</span>
+          <h3>Lentos y rock nacional</h3>
+          <p>Cerramos el día con una selección de buenos lentos, acompañados de algo de rock nacional.</p>
+          <div class="slot-foot">
+            <div class="mini-player" data-title="La Hora Lentos y Jazz y Blues Americano">
+              <button class="mp-btn" type="button" aria-label="Reproducir La Hora Lentos y Jazz y Blues Americano">
+                <svg class="icon icon-fill" aria-hidden="true"><use href="#i-play"/></svg>
+              </button>
+              <div class="mp-body">
+                <span class="mp-title">La Hora Lentos y Jazz y Blues Americano</span>
+                <input class="mp-seek" type="range" min="0" max="100" step="0.1" value="0" aria-label="Posición del audio">
+                <span class="mp-time">0:00</span>
+              </div>
+              <audio preload="metadata" src="la-hora-lentos-y-jazz-y-blues.mp3"></audio>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ENFOQUE -->
+    <section class="enfoque" id="identidad">
+      <div class="enfoque-title-section">
+        <span class="eyebrow">Nuestro enfoque</span>
+        <h2>Rescatar y difundir lo mejor de nuestra identidad musical.</h2>
+      </div>
+      <div class="enfoque-content">
+        <p>Nuestra programación está pensada para acompañarte durante todo el día con una propuesta que fusiona la historia y la actualidad.</p>
+        <p>Somos una radio nueva y estamos creciendo con la gente de Brandsen. Mantenemos siempre un estándar de calidad profesional en cada emisión, porque cada canción merece ser escuchada con el respeto que su historia construyó.</p>
+        <div class="stats">
+          <div class="stat-item"><div class="num">24/7</div><div class="label">En el aire</div></div>
+          <div class="stat-item"><div class="num">3</div><div class="label">Raíces: tango, folklore y rock</div></div>
+          <div class="stat-item"><div class="num">91.5</div><div class="label">FM en Brandsen</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMBLEMA -->
+    <section class="emblema-section">
+      <div>
+        <img src="emblema.png" alt="Emblema de Radio Bilbo: tango, folklore y rock nacional" class="emblema-img" loading="lazy" decoding="async">
+      </div>
+      <div class="emblema-info">
+        <span class="eyebrow">Nuestro emblema</span>
+        <h2>Desde <em>Brandsen</em> al mundo.</h2>
+        <p>Nuestro sello reúne todo lo que somos: el abrazo del tango, la raíz del folklore y la fuerza del rock nacional. Una identidad que viaja por las ondas del 91.5 y cruza fronteras gracias a internet.</p>
+        <div class="genre-tags">
+          <span class="tag">Tango</span>
+          <span class="tag">Folklore</span>
+          <span class="tag">Rock Nacional</span>
+          <span class="tag">FM 91.5</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EN VIVO -->
+    <section class="player-section" id="envivo">
+      <span class="eyebrow">Transmitiendo ahora</span>
+      <h2>Escuchanos <em>en vivo</em>, desde donde estés.</h2>
+      <p class="lead">Accedé a nuestra transmisión en tiempo real desde el celular, la compu o la tele.</p>
+
+      <a href="https://radiobilbofm.radio12345.com" target="_blank" rel="noopener noreferrer" class="big-play-btn" id="playBtn" aria-label="Escuchar Radio Bilbo en vivo">
+        <svg class="icon icon-fill" id="playIcon" aria-hidden="true"><use href="#i-play"/></svg>
+      </a>
+      <p class="player-status" id="playerStatus">Hacé clic para escuchar la radio en vivo</p>
+      <p class="player-sub">REPRODUCTOR DE STREAMING</p>
+      <p class="now-playing" id="nowPlaying" hidden></p>
+    </section>
+
+    <!-- INSTALAR LA APP -->
+    <section class="instalar" id="app">
+      <span class="eyebrow">La app de Radio Bilbo</span>
+      <h2>Llevá la radio en tu celular.</h2>
+      <p class="lead">Instalala gratis desde acá, sin descargar archivos ni pasar por ninguna tienda. Queda el ícono de Radio Bilbo en tu pantalla y, al abrirla, suena la radio.</p>
+      <div class="install-actions">
+        <button type="button" class="btn-primary" data-instalar>
+          <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Descargar la app
+        </button>
+        <a href="app.html" class="btn-outline">Abrir el reproductor</a>
+      </div>
+      <div class="install-steps">
+        <div class="step-card">
+          <h3>En Android</h3>
+          <p>Abrí esta página en <strong>Chrome</strong>, tocá el menú <strong>⋮</strong> y elegí <strong>Instalar app</strong> (o <strong>Agregar a la pantalla de inicio</strong>).</p>
+        </div>
+        <div class="step-card">
+          <h3>En iPhone</h3>
+          <p>Abrí esta página en <strong>Safari</strong>, tocá el botón <strong>Compartir</strong> y elegí <strong>Agregar a inicio</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OYENTES -->
+    <section class="oyentes" id="oyentes">
+      <span class="eyebrow">Oyentes</span>
+      <h2>La radio también es tuya.</h2>
+      <p>Mandanos tu saludo, pedí ese tema que querés escuchar o contanos qué te gustaría que suene. Te leemos por todos lados.</p>
+      <div class="contact-buttons">
+        <a href="#" class="btn-primary" data-wa hidden target="_blank" rel="noopener noreferrer">
+          <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Escribinos por WhatsApp
+        </a>
+        <a href="https://www.instagram.com/radiobilbofm/?hl=es" target="_blank" rel="noopener noreferrer" class="btn-outline">
+          <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg> Instagram
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61591400250951" target="_blank" rel="noopener noreferrer" class="btn-outline">
+          <svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg> Facebook
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <a href="#inicio" class="brand-title">Radio Bilbo 91.5 FM</a>
+    <p>El Sonido de Brandsen · Buenos Aires, Argentina</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/radiobilbofm/?hl=es" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram de Radio Bilbo">
+        <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61591400250951" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook de Radio Bilbo">
+        <svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg>
+      </a>
+    </div>
+    <p>Tango · Folklore · Rock Nacional</p>
+    <p class="copy">© Radio Bilbo 91.5 FM. Todos los derechos reservados.</p>
+  </footer>
+
+  <a href="#" class="wa-float" data-wa hidden target="_blank" rel="noopener noreferrer" aria-label="Escribinos por WhatsApp">
+    <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+  </a>
+
+  <!-- Botón flotante para descargar la app (celular) -->
+  <div class="app-bar" id="appBar">
+    <button type="button" class="app-bar-btn" data-instalar>
+      <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Descargar la app
+    </button>
+    <button type="button" class="app-bar-x" id="appBarCerrar" aria-label="Ocultar este botón">×</button>
+  </div>
+
+  <!-- Ventana de ayuda para instalar la app -->
+  <div class="modal" id="ayudaInstalar" role="dialog" aria-modal="true" aria-labelledby="ayudaTitulo" hidden>
+    <div class="modal-card">
+      <button type="button" class="modal-close" id="ayudaCerrar" aria-label="Cerrar">×</button>
+      <h3 id="ayudaTitulo"></h3>
+      <div id="ayudaTexto"></div>
+      <button type="button" class="btn-primary" id="ayudaOk">Entendido</button>
+    </div>
+  </div>
+
+  <script>
+    /* ============ CONFIGURACIÓN (editá solo esto) ============ */
+    // 1) Link directo del stream (https://...). Si lo completás, la radio suena
+    //    dentro de la página sin salir del sitio. Si queda vacío, se abre el
+    //    reproductor externo actual.
+    const STREAM_URL = ""; // vacío: los botones "En vivo" abren el reproductor de radio12345.com
+
+    // 2) Número de WhatsApp con código de país, sin + ni espacios.
+    //    Ejemplo Argentina: "5492223123456". Si queda vacío, el botón no se muestra.
+    const WHATSAPP = "";
+    const WHATSAPP_MENSAJE = "Hola Radio Bilbo! Quería mandar un saludo / pedir un tema.";
+
+    const EXTERNAL_PLAYER = "https://radiobilbofm.radio12345.com";
+    /* ========================================================= */
+
+    /* WhatsApp */
+    if (WHATSAPP) {
+      document.querySelectorAll("[data-wa]").forEach(function (el) {
+        el.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(WHATSAPP_MENSAJE);
+        el.hidden = false;
+      });
+    }
+
+    /* Reproductor integrado */
+    if (STREAM_URL) {
+      var audio = null;
+      var btn = document.getElementById("playBtn");
+      var icon = document.getElementById("playIcon").querySelector("use");
+      var status = document.getElementById("playerStatus");
+
+      btn.removeAttribute("target");
+      btn.setAttribute("role", "button");
+
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (!audio) {
+          audio = new Audio(STREAM_URL);
+          audio.preload = "none";
+          audio.addEventListener("error", function () {
+            icon.setAttribute("href", "#i-play");
+            status.textContent = "No pudimos conectar. Probá en el reproductor alternativo.";
+            btn.setAttribute("href", EXTERNAL_PLAYER);
+            btn.setAttribute("target", "_blank");
+            audio = null;
+          });
+        }
+        if (audio.paused) {
+          pausarAudiosCortos();
+          audio.play().then(function () {
+            icon.setAttribute("href", "#i-pause");
+            status.textContent = "Estás escuchando Radio Bilbo 91.5 FM";
+            btn.setAttribute("aria-label", "Pausar Radio Bilbo");
+          }).catch(function () {
+            status.textContent = "No pudimos reproducir. Tocá de nuevo.";
+          });
+        } else {
+          audio.pause();
+          icon.setAttribute("href", "#i-play");
+          status.textContent = "En pausa. Hacé clic para volver a escuchar";
+          btn.setAttribute("aria-label", "Escuchar Radio Bilbo en vivo");
+        }
+      });
+
+      /* Para pausar la radio cuando se reproduce un audio de un bloque */
+      window.pausarEnVivo = function () {
+        if (audio && !audio.paused) {
+          audio.pause();
+          icon.setAttribute("href", "#i-play");
+          status.textContent = "En pausa. Hacé clic para volver a escuchar";
+          btn.setAttribute("aria-label", "Escuchar Radio Bilbo en vivo");
+        }
+      };
+
+      /* Los botones "En vivo" del header y del hero llevan al reproductor */
+      document.querySelectorAll("[data-live-link]").forEach(function (el) {
+        el.removeAttribute("target");
+        el.setAttribute("href", "#envivo");
+      });
+    }
+
+    /* Reproductores mp3 de cada bloque */
+    function pausarAudiosCortos(excepto) {
+      document.querySelectorAll(".mini-player audio").forEach(function (a) {
+        if (a !== excepto) a.pause();
+      });
+    }
+
+    function formatoTiempo(s) {
+      if (!isFinite(s)) return "0:00";
+      var m = Math.floor(s / 60), r = Math.floor(s % 60);
+      return m + ":" + (r < 10 ? "0" : "") + r;
+    }
+
+    document.querySelectorAll(".mini-player").forEach(function (box) {
+      var audioEl = box.querySelector("audio");
+      var boton = box.querySelector(".mp-btn");
+      var uso = boton.querySelector("use");
+      var barra = box.querySelector(".mp-seek");
+      var tiempo = box.querySelector(".mp-time");
+      var titulo = box.dataset.title;
+
+      function icono(sonando) {
+        uso.setAttribute("href", sonando ? "#i-pause" : "#i-play");
+        boton.setAttribute("aria-label", (sonando ? "Pausar " : "Reproducir ") + titulo);
+      }
+      function pintar() {
+        var d = audioEl.duration;
+        barra.value = d ? (audioEl.currentTime / d) * 100 : 0;
+        tiempo.textContent = formatoTiempo(audioEl.currentTime) + " / " + formatoTiempo(d);
+      }
+
+      boton.addEventListener("click", function () {
+        if (audioEl.paused) {
+          pausarAudiosCortos(audioEl);
+          if (window.pausarEnVivo) window.pausarEnVivo();
+          audioEl.play().catch(function () { tiempo.textContent = "No se pudo reproducir"; });
+        } else {
+          audioEl.pause();
+        }
+      });
+      audioEl.addEventListener("play", function () { icono(true); });
+      audioEl.addEventListener("pause", function () { icono(false); });
+      audioEl.addEventListener("ended", function () { audioEl.currentTime = 0; icono(false); pintar(); });
+      audioEl.addEventListener("timeupdate", pintar);
+      audioEl.addEventListener("loadedmetadata", pintar);
+      barra.addEventListener("input", function () {
+        if (audioEl.duration) audioEl.currentTime = (barra.value / 100) * audioEl.duration;
+      });
+    });
+
+    /* "Al aire ahora": marca el bloque según la hora de Argentina */
+    function actualizarAlAire() {
+      var hour;
+      try {
+        var parts = new Intl.DateTimeFormat("es-AR", {
+          hour: "numeric", hourCycle: "h23", timeZone: "America/Argentina/Buenos_Aires"
+        }).formatToParts(new Date());
+        hour = parseInt(parts.find(function (p) { return p.type === "hour"; }).value, 10);
+      } catch (e) { return; }
+
+      var np = document.getElementById("nowPlaying");
+      var hayBloque = false;
+
+      document.querySelectorAll("[data-start]").forEach(function (slot) {
+        var s = parseInt(slot.dataset.start, 10);
+        var e = parseInt(slot.dataset.end, 10);
+        var on = s < e ? (hour >= s && hour < e) : (hour >= s || hour < e);
+        slot.classList.toggle("is-now", on);
+        if (on) {
+          hayBloque = true;
+          np.textContent = "Ahora en el aire: " + slot.dataset.name;
+        }
+      });
+
+      np.hidden = !hayBloque;
+    }
+
+    actualizarAlAire();
+    setInterval(actualizarAlAire, 60000); // se actualiza solo cada minuto
+
+    /* Descargar la app (instalación desde el navegador) */
+    (function () {
+      var botones = document.querySelectorAll("[data-instalar]");
+      var seccion = document.getElementById("app");
+      var modal = document.getElementById("ayudaInstalar");
+      var titulo = document.getElementById("ayudaTitulo");
+      var texto = document.getElementById("ayudaTexto");
+      var pendiente = null;
+
+      var ua = navigator.userAgent || "";
+      var esIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+      var esAndroid = /Android/i.test(ua);
+      var enOtraApp = /FBAN|FBAV|FB_IAB|Instagram|Line\/|MicroMessenger|Snapchat|TikTok|; wv\)/i.test(ua);
+
+      // Si ya está abierta como app instalada, no hace falta mostrar los botones de descarga
+      var instalada = (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) || navigator.standalone;
+      var barra = document.getElementById("appBar");
+      if (instalada) {
+        botones.forEach(function (b) { b.hidden = true; });
+        if (seccion) seccion.hidden = true;
+        if (barra) barra.hidden = true;
+      }
+      document.getElementById("appBarCerrar").addEventListener("click", function () {
+        if (barra) barra.hidden = true;
+      });
+
+      function abrirAyuda(tit, html) {
+        titulo.textContent = tit;
+        texto.innerHTML = html;
+        modal.hidden = false;
+        document.getElementById("ayudaOk").focus();
+      }
+      function cerrarAyuda() { modal.hidden = true; }
+
+      document.getElementById("ayudaCerrar").addEventListener("click", cerrarAyuda);
+      document.getElementById("ayudaOk").addEventListener("click", cerrarAyuda);
+      modal.addEventListener("click", function (e) { if (e.target === modal) cerrarAyuda(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") cerrarAyuda(); });
+
+      function ayudaSegunCelular() {
+        if (enOtraApp) {
+          abrirAyuda("Abrila en tu navegador",
+            "<p>Estás viendo la página dentro de otra app (Instagram, Facebook, WhatsApp…) y desde ahí no se puede instalar.</p>" +
+            "<p>Tocá los <strong>tres puntos ⋮</strong> de arriba y elegí <strong>Abrir en el navegador</strong> (o <strong>Abrir en Chrome</strong>). Una vez ahí, tocá <strong>Descargar la app</strong> otra vez.</p>");
+        } else if (esIOS) {
+          abrirAyuda("Instalar en iPhone",
+            "<p>Apple no permite instalar con un solo toque, pero son dos pasos:</p>" +
+            "<p>1. Abrí esta página en <strong>Safari</strong> y tocá el botón <strong>Compartir</strong> (el cuadrado con una flecha hacia arriba).</p>" +
+            "<p>2. Elegí <strong>Agregar a inicio</strong> y confirmá. Listo, queda el ícono de Radio Bilbo.</p>");
+        } else if (esAndroid) {
+          abrirAyuda("Instalar en Android",
+            "<p>Abrí esta página en <strong>Chrome</strong>, tocá el menú <strong>⋮</strong> (arriba a la derecha) y elegí <strong>Instalar app</strong> o <strong>Agregar a la pantalla de inicio</strong>.</p>" +
+            "<p>Si ya la instalaste, buscá el ícono de Radio Bilbo en tu pantalla de inicio.</p>");
+        } else {
+          abrirAyuda("Instalar la app",
+            "<p>Para instalarla abrí esta página <strong>desde tu celular</strong>.</p>" +
+            "<p>En la compu, con Chrome o Edge, también podés tocar el ícono de instalar que aparece en la barra de direcciones.</p>");
+        }
+      }
+
+      // El navegador avisa cuando se puede instalar con un toque
+      window.addEventListener("beforeinstallprompt", function (e) {
+        e.preventDefault();
+        pendiente = e;
+      });
+
+      botones.forEach(function (b) {
+        b.addEventListener("click", function () {
+          if (pendiente) {
+            var evento = pendiente;
+            pendiente = null;
+            evento.prompt();
+            if (evento.userChoice && evento.userChoice.then) {
+              evento.userChoice.then(function (r) {
+                if (r && r.outcome === "accepted") {
+                  abrirAyuda("¡Listo!", "<p>Radio Bilbo se está instalando. Buscá el ícono en tu pantalla de inicio y tocalo para escuchar la radio.</p>");
+                }
+              });
+            }
+          } else {
+            ayudaSegunCelular();
+          }
+        });
+      });
+
+      window.addEventListener("appinstalled", function () {
+        abrirAyuda("¡Listo!", "<p>Radio Bilbo ya está instalada. Buscá el ícono en tu pantalla de inicio y tocalo para escuchar la radio.</p>");
+      });
+
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("sw.js").catch(function () { /* la página funciona igual */ });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
