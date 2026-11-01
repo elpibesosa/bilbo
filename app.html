@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Radio Bilbo 91.5 FM</title>
+  <meta name="description" content="Radio Bilbo 91.5 FM, El Sonido de Brandsen. Escuchá en vivo.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#120907">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Radio Bilbo">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #120907;
+      --accent: #e59b34;
+      --text: #f5e8da;
+      --muted: #a68d83;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: radial-gradient(circle at 50% 35%, rgba(229, 155, 52, 0.10) 0%, var(--bg) 65%);
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      min-height: 100vh; min-height: 100dvh;
+      padding: max(24px, env(safe-area-inset-top)) 24px max(24px, env(safe-area-inset-bottom));
+      overflow-x: hidden;
+    }
+
+    /* Logo: gira suave (una vuelta cada 40 s) solo mientras suena la radio */
+    main { display: flex; flex-direction: column; align-items: center; width: 100%; }
+    .logo-wrap { width: min(66vw, 280px); }
+    .logo {
+      display: block; width: 100%; height: auto;
+      transform-origin: 51.35% 48.86%;
+      animation: girar 40s linear infinite;
+      animation-play-state: paused;
+    }
+    .sonando .logo { animation-play-state: running; }
+    @keyframes girar { to { transform: rotate(360deg); } }
+
+    .dial { margin-top: 18px; color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: 3px; }
+    h1 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 2.4rem; line-height: 1.15; }
+    .lema { color: var(--muted); font-size: 0.95rem; margin-top: 2px; }
+
+    .play {
+      margin-top: 30px;
+      width: 104px; height: 104px; border-radius: 50%; border: none; cursor: pointer;
+      background: linear-gradient(135deg, #e59b34, #b8731d);
+      color: #120907;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 30px rgba(229, 155, 52, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .play:active { transform: scale(0.95); }
+    .play:focus-visible { outline: 3px solid var(--text); outline-offset: 4px; }
+    .play svg { width: 44px; height: 44px; fill: currentColor; }
+    .play .i-pausa { display: none; }
+    .activo .play .i-play { display: none; }
+    .activo .play .i-pausa { display: block; }
+
+    .estado { margin-top: 22px; min-height: 3.2em; max-width: 320px; font-size: 1rem; }
+    .alternativo { display: none; margin-top: 4px; color: var(--accent); font-size: 0.9rem; }
+    .con-error .alternativo { display: inline-block; }
+    .pie { margin-top: 18px; color: var(--muted); font-size: 0.8rem; }
+
+    @media (max-height: 640px) {
+      .logo-wrap { width: min(42vw, 180px); }
+      h1 { font-size: 1.9rem; }
+      .play { margin-top: 18px; width: 88px; height: 88px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .logo { animation: none; } }
+  </style>
+</head>
+<body>
+
+  <main id="app">
+    <div class="logo-wrap">
+      <img class="logo" src="logo.png" width="1000" height="1050" alt="Logo de Radio Bilbo 91.5 FM">
+    </div>
+    <div class="dial">91.5 FM</div>
+    <h1>Radio Bilbo</h1>
+    <p class="lema">El Sonido de Brandsen</p>
+
+    <button class="play" id="play" type="button" aria-label="Escuchar Radio Bilbo en vivo">
+      <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><polygon points="7 4 20 12 7 20"/></svg>
+      <svg class="i-pausa" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4.5" height="16"/><rect x="13.5" y="4" width="4.5" height="16"/></svg>
+    </button>
+
+    <p class="estado" id="estado" role="status" aria-live="polite">Tocá para escuchar</p>
+    <a class="alternativo" id="alternativo" href="https://radiobilbofm.radio12345.com" target="_blank" rel="noopener noreferrer">Probar con el reproductor alternativo</a>
+    <p class="pie">Tango · Folklore · Rock Nacional</p>
+  </main>
+
+  <script>
+    /* Si algún día cambia el proveedor del streaming, se cambia solo esta línea (tiene que ser https). */
+    var STREAM_URL = "https://uk16freenew.listen2myradio.com/live.mp3?typeportmount=s1_15701_stream_113140693";
+
+    var MAX_REINTENTOS = 5;
+    var ESPERA_REINTENTO_MS = 3000;
+    var ESPERA_CONEXION_MS = 20000;
+
+    var raiz = document.getElementById("app");
+    var boton = document.getElementById("play");
+    var textoEstado = document.getElementById("estado");
+
+    var audio = null;
+    var quiere = false;
+    var reintentos = 0;
+    var tRetry = null;
+    var tConexion = null;
+
+    var TEXTOS = {
+      detenido: "Tocá para escuchar",
+      conectando: "Conectando…",
+      sonando: "Estás escuchando Radio Bilbo en vivo",
+      sinred: "Sin conexión a internet.\nConectate al Wi‑Fi o a los datos y probá de nuevo.",
+      error: "No pudimos conectar con la radio.\nProbá de nuevo en un momento."
+    };
+
+    function mostrar(estado) {
+      var activo = (estado === "sonando" || estado === "conectando");
+      raiz.classList.toggle("activo", activo);
+      raiz.classList.toggle("sonando", estado === "sonando");
+      raiz.classList.toggle("con-error", estado === "error" || estado === "sinred");
+      textoEstado.style.whiteSpace = "pre-line";
+      textoEstado.textContent = TEXTOS[estado];
+      boton.setAttribute("aria-label", activo ? "Detener la radio" : "Escuchar Radio Bilbo en vivo");
+      if ("mediaSession" in navigator) {
+        navigator.mediaSession.playbackState = (estado === "sonando") ? "playing" : "paused";
+      }
+    }
+
+    function limpiarTimers() {
+      clearTimeout(tRetry);
+      clearTimeout(tConexion);
+    }
+
+    function soltarAudio() {
+      if (!audio) return;
+      var a = audio;
+      audio = null;                 // los eventos de este audio viejo se ignoran
+      try { a.pause(); a.removeAttribute("src"); a.load(); } catch (e) { /* nada */ }
+    }
+
+    function detener() {
+      quiere = false;
+      limpiarTimers();
+      soltarAudio();
+      mostrar("detenido");
+    }
+
+    function fallar() {
+      quiere = false;
+      limpiarTimers();
+      soltarAudio();
+      mostrar(navigator.onLine === false ? "sinred" : "error");
+    }
+
+    function reintentarOFallar() {
+      if (!quiere) return;
+      soltarAudio();
+      clearTimeout(tConexion);
+      if (reintentos < MAX_REINTENTOS && navigator.onLine !== false) {
+        reintentos++;
+        mostrar("conectando");
+        tRetry = setTimeout(conectar, ESPERA_REINTENTO_MS);
+      } else {
+        fallar();
+      }
+    }
+
+    function conectar() {
+      quiere = true;
+      limpiarTimers();
+      soltarAudio();
+
+      if (navigator.onLine === false) { fallar(); return; }
+      mostrar("conectando");
+
+      var a = new Audio();
+      audio = a;
+      a.preload = "none";
+      a.src = STREAM_URL;
+
+      a.addEventListener("playing", function () {
+        if (a !== audio) return;
+        clearTimeout(tConexion);
+        reintentos = 0;
+        mostrar("sonando");
+      });
+      a.addEventListener("waiting", function () { if (a === audio && quiere) mostrar("conectando"); });
+      a.addEventListener("error", function () { if (a === audio) reintentarOFallar(); });
+      a.addEventListener("ended", function () { if (a === audio) reintentarOFallar(); });
+      a.addEventListener("pause", function () {
+        // pausa que viene de afuera (auriculares, llamada, controles del celular)
+        if (a === audio && quiere) detener();
+      });
+
+      tConexion = setTimeout(function () { if (a === audio) reintentarOFallar(); }, ESPERA_CONEXION_MS);
+
+      var p = a.play();
+      if (p && p.catch) {
+        p.catch(function () { if (a === audio) reintentarOFallar(); });
+      }
+    }
+
+    boton.addEventListener("click", function () {
+      if (quiere) { detener(); } else { reintentos = 0; conectar(); }
+    });
+
+    window.addEventListener("online", function () {
+      if (quiere && !audio) { reintentos = 0; conectar(); }
+    });
+
+    /* Controles en la pantalla bloqueada y en la notificación del celular */
+    if ("mediaSession" in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: "Radio Bilbo 91.5 FM",
+        artist: "El Sonido de Brandsen",
+        album: "En vivo",
+        artwork: [
+          { src: "icon-192.png", sizes: "192x192", type: "image/png" },
+          { src: "icon-512.png", sizes: "512x512", type: "image/png" }
+        ]
+      });
+      navigator.mediaSession.setActionHandler("play", function () { reintentos = 0; conectar(); });
+      navigator.mediaSession.setActionHandler("pause", detener);
+      navigator.mediaSession.setActionHandler("stop", detener);
+    }
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js").catch(function () { /* sigue funcionando igual */ });
+      });
+    }
+  </script>
+</body>
+</html>

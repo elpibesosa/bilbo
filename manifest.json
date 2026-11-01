@@ -1,0 +1,17 @@
+{
+  "name": "Radio Bilbo 91.5 FM",
+  "short_name": "Radio Bilbo",
+  "description": "El Sonido de Brandsen. Tango, folklore y rock nacional en vivo.",
+  "lang": "es-AR",
+  "start_url": "app.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#120907",
+  "theme_color": "#120907",
+  "categories": ["music", "entertainment"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
