@@ -148,9 +148,8 @@
       text-align: center; padding: 60px 20px;
       background: radial-gradient(circle at center, rgba(229, 155, 52, 0.08) 0%, rgba(18, 9, 7, 1) 70%);
     }
-    /* Logo redondo: gira lento y suave alrededor del centro real del círculo */
     .logo-wrap { position: relative; width: 90%; max-width: 350px; margin-bottom: 30px; }
-    .logo-wrap::before { /* resplandor dorado fijo, detrás del círculo */
+    .logo-wrap::before {
       content: ""; position: absolute; border-radius: 50%;
       left: 9.1%; top: 8.67%; width: 84.5%; height: 80.38%;
       box-shadow: 0 0 45px rgba(229, 155, 52, 0.28);
@@ -158,7 +157,7 @@
     .guitar-logo {
       position: relative; display: block; width: 100%; height: auto;
       transform-origin: 51.35% 48.86%;
-      animation: girar 40s linear infinite; /* una vuelta cada 40 segundos */
+      animation: girar 40s linear infinite;
     }
     @keyframes girar { to { transform: rotate(360deg); } }
     .new-badge {
@@ -212,13 +211,13 @@
       background-color: var(--bg-color); border: 1px solid var(--border-color);
       border-radius: 18px; padding: 32px 28px; position: relative;
       transition: border-color 0.3s ease, transform 0.3s ease;
+      display: flex; flex-direction: column;
     }
     .slot:hover { border-color: rgba(229, 155, 52, 0.5); transform: translateY(-4px); }
     .slot.is-now { border-color: var(--accent-color); box-shadow: 0 0 30px rgba(229, 155, 52, 0.15); }
     .slot .when { color: var(--accent-color); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
     .slot h3 { font-size: 1.7rem; margin: 10px 0 12px; line-height: 1.2; }
     .slot p { color: var(--text-muted); font-size: 0.95rem; }
-    .slot .note { margin-top: 14px; font-size: 0.85rem; color: var(--text-main); }
     .now-badge {
       display: none; position: absolute; top: 18px; right: 18px;
       background-color: var(--accent-color); color: #120907;
@@ -226,9 +225,6 @@
       padding: 3px 10px; border-radius: 12px;
     }
     .slot.is-now .now-badge { display: inline-block; }
-
-    /* REPRODUCTOR MP3 DE CADA BLOQUE (queda siempre abajo de la tarjeta) */
-    .slot { display: flex; flex-direction: column; }
     .slot-foot { margin-top: auto; padding-top: 24px; }
     .mini-player {
       display: flex; align-items: center; gap: 14px;
@@ -279,6 +275,27 @@
     .player-sub { color: var(--text-muted); font-size: 0.85rem; margin-top: 6px; }
     .now-playing { margin-top: 18px; color: var(--accent-color); font-size: 0.9rem; font-weight: 600; }
 
+    /* CARTEL DE INCONVENIENTES */
+    .cartel-aviso {
+      display: none;
+      max-width: 600px;
+      margin: 25px auto 0;
+      background-color: rgba(220, 53, 69, 0.15);
+      border: 1px solid #dc3545;
+      color: #ff6b6b;
+      padding: 18px 24px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 20px rgba(220, 53, 69, 0.2);
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     /* OYENTES */
     .oyentes { padding: 100px 10%; text-align: center; }
     .oyentes h2 { font-size: 2.8rem; line-height: 1.2; margin: 15px 0; }
@@ -304,7 +321,6 @@
     .wa-float:hover { transform: scale(1.08); }
     [hidden] { display: none !important; }
 
-    /* RESPONSIVE */
     @media (max-width: 900px) {
       .schedule { grid-template-columns: 1fr; }
     }
@@ -317,20 +333,12 @@
       .enfoque-title-section h2, .section-head h2, .emblema-info h2, .oyentes h2 { font-size: 2.1rem; }
       .player-section h2 { font-size: 2.2rem; }
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .live-dot { animation: none; }
-      .guitar-logo { animation: none; }
-      * { transition: none !important; }
-    }
   </style>
 </head>
 <body>
 
   <a href="#contenido" class="skip-link">Saltar al contenido</a>
 
-  <!-- Iconos (se cargan una sola vez, sin librerías externas) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></symbol>
     <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
@@ -360,7 +368,7 @@
         <li><a href="#oyentes">Oyentes</a></li>
       </ul>
     </nav>
-    <a href="https://radiobilbofm.radio12345.com" target="_blank" rel="noopener noreferrer" class="live-tag" data-live-link>
+    <a href="#envivo" class="live-tag" data-live-link>
       <span class="live-dot" aria-hidden="true"></span>
       EN VIVO
     </a>
@@ -380,7 +388,7 @@
         Radio Bilbo 91.5 FM es la radio de Brandsen que conecta generaciones con tango, folklore y rock nacional. El espacio donde la esencia de nuestra cultura encuentra su lugar en el dial.
       </p>
       <div class="hero-buttons">
-        <a href="https://radiobilbofm.radio12345.com" target="_blank" rel="noopener noreferrer" class="btn-primary" data-live-link>
+        <a href="#envivo" class="btn-primary" data-live-link>
           <svg class="icon icon-fill" aria-hidden="true"><use href="#i-play"/></svg> Escuchar en vivo
         </a>
         <a href="#programacion" class="btn-secondary">Ver la programación →</a>
@@ -496,12 +504,17 @@
       <h2>Escuchanos <em>en vivo</em>, desde donde estés.</h2>
       <p class="lead">Accedé a nuestra transmisión en tiempo real desde el celular, la compu o la tele.</p>
 
-      <a href="https://radiobilbofm.radio12345.com" target="_blank" rel="noopener noreferrer" class="big-play-btn" id="playBtn" aria-label="Escuchar Radio Bilbo en vivo">
-        <svg class="icon icon-fill" id="playIcon" aria-hidden="true"><use href="#i-play"/></svg>
+      <a href="#" class="big-play-btn" id="playBtn" aria-label="Escuchar Radio Bilbo en vivo">
+        <svg class="icon icon-fill" aria-hidden="true"><use href="#i-play"/></svg>
       </a>
       <p class="player-status" id="playerStatus">Hacé clic para escuchar la radio en vivo</p>
       <p class="player-sub">REPRODUCTOR DE STREAMING</p>
       <p class="now-playing" id="nowPlaying" hidden></p>
+
+      <!-- Cartel de inconvenientes -->
+      <div id="cartelInconvenientes" class="cartel-aviso">
+        TENEMOS INCONVENIENTES, ESTAMOS TRABAJANDO EN ELLOS
+      </div>
     </section>
 
     <!-- OYENTES -->
@@ -544,19 +557,10 @@
   </a>
 
   <script>
-    /* ============ CONFIGURACIÓN (editá solo esto) ============ */
-    // 1) Link directo del stream (https://...). Si lo completás, la radio suena
-    //    dentro de la página sin salir del sitio. Si queda vacío, se abre el
-    //    reproductor externo actual.
-    const STREAM_URL = ""; // vacío: los botones "En vivo" abren el reproductor de radio12345.com
-
-    // 2) Número de WhatsApp con código de país, sin + ni espacios.
-    //    Ejemplo Argentina: "5492223123456". Si queda vacío, el botón no se muestra.
+    /* ============ CONFIGURACIÓN ============ */
     const WHATSAPP = "";
     const WHATSAPP_MENSAJE = "Hola Radio Bilbo! Quería mandar un saludo / pedir un tema.";
-
-    const EXTERNAL_PLAYER = "https://radiobilbofm.radio12345.com";
-    /* ========================================================= */
+    /* ======================================= */
 
     /* WhatsApp */
     if (WHATSAPP) {
@@ -566,62 +570,19 @@
       });
     }
 
-    /* Reproductor integrado */
-    if (STREAM_URL) {
-      var audio = null;
-      var btn = document.getElementById("playBtn");
-      var icon = document.getElementById("playIcon").querySelector("use");
-      var status = document.getElementById("playerStatus");
+    /* Interceptar botones de En Vivo para mostrar el cartel de inconvenientes */
+    const liveButtons = document.querySelectorAll("[data-live-link], #playBtn");
+    const cartelInconvenientes = document.getElementById("cartelInconvenientes");
 
-      btn.removeAttribute("target");
-      btn.setAttribute("role", "button");
-
+    liveButtons.forEach(function (btn) {
       btn.addEventListener("click", function (e) {
-        e.preventDefault();
-        if (!audio) {
-          audio = new Audio(STREAM_URL);
-          audio.preload = "none";
-          audio.addEventListener("error", function () {
-            icon.setAttribute("href", "#i-play");
-            status.textContent = "No pudimos conectar. Probá en el reproductor alternativo.";
-            btn.setAttribute("href", EXTERNAL_PLAYER);
-            btn.setAttribute("target", "_blank");
-            audio = null;
-          });
-        }
-        if (audio.paused) {
-          pausarAudiosCortos();
-          audio.play().then(function () {
-            icon.setAttribute("href", "#i-pause");
-            status.textContent = "Estás escuchando Radio Bilbo 91.5 FM";
-            btn.setAttribute("aria-label", "Pausar Radio Bilbo");
-          }).catch(function () {
-            status.textContent = "No pudimos reproducir. Tocá de nuevo.";
-          });
-        } else {
-          audio.pause();
-          icon.setAttribute("href", "#i-play");
-          status.textContent = "En pausa. Hacé clic para volver a escuchar";
-          btn.setAttribute("aria-label", "Escuchar Radio Bilbo en vivo");
+        e.preventDefault(); // Evita que abra enlaces o reproduzca
+        if (cartelInconvenientes) {
+          cartelInconvenientes.style.display = "block";
+          cartelInconvenientes.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       });
-
-      /* Para pausar la radio cuando se reproduce un audio de un bloque */
-      window.pausarEnVivo = function () {
-        if (audio && !audio.paused) {
-          audio.pause();
-          icon.setAttribute("href", "#i-play");
-          status.textContent = "En pausa. Hacé clic para volver a escuchar";
-          btn.setAttribute("aria-label", "Escuchar Radio Bilbo en vivo");
-        }
-      };
-
-      /* Los botones "En vivo" del header y del hero llevan al reproductor */
-      document.querySelectorAll("[data-live-link]").forEach(function (el) {
-        el.removeAttribute("target");
-        el.setAttribute("href", "#envivo");
-      });
-    }
+    });
 
     /* Reproductores mp3 de cada bloque */
     function pausarAudiosCortos(excepto) {
@@ -657,7 +618,6 @@
       boton.addEventListener("click", function () {
         if (audioEl.paused) {
           pausarAudiosCortos(audioEl);
-          if (window.pausarEnVivo) window.pausarEnVivo();
           audioEl.play().catch(function () { tiempo.textContent = "No se pudo reproducir"; });
         } else {
           audioEl.pause();
@@ -701,7 +661,7 @@
     }
 
     actualizarAlAire();
-    setInterval(actualizarAlAire, 60000); // se actualiza solo cada minuto
+    setInterval(actualizarAlAire, 60000);
   </script>
 </body>
 </html>
